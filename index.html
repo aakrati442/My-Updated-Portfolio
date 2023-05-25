@@ -297,7 +297,7 @@ I have done a variety of certificates from Infosys Springboard, Hackerrank, Cour
         <img draggable="false" src="" alt="map">
         
       </div>
-    <form id="form" >
+    <form id="form" action="index.html" >
       
       <div class="form-group">
         <div class="field">
@@ -309,7 +309,7 @@ I have done a variety of certificates from Infosys Springboard, Hackerrank, Cour
           <i class='fas fa-envelope'></i>
         </div>
         <div class="message">
-        <textarea placeholder="Message" name="message" id="message" required></textarea>
+        <textarea placeholder="Message" name="message" id="subject" required></textarea>
         <i class="fas fa-comment-dots"></i>
         </div>
         </div>
@@ -371,7 +371,7 @@ I have done a variety of certificates from Infosys Springboard, Hackerrank, Cour
 
 
 <!-- ==== ALL MAJOR JAVASCRIPT CDNS STARTS ==== -->
-<!-- jquery cdn -->
+jquery cdn
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 typed.js cdn -->
@@ -400,36 +400,8 @@ typed.js cdn -->
 
 <script src="./assets/js/script.js"></script>
 
-<script src="../My-Updated-Portfolio/assets/js/mail.js" type="module"></script>
-  <script type="module">
-    import{getDatabase,ref,get,set,update,remove,child} from "https://www.gstatic.com/firebasejs/9.19.0/firebase-database.js";
-        const db=getDatabase();
-        var Name=document.getElementById("name");
-        var email=document.getElementById("email");
-        var message=document.getElementById("message");
-
-        document.getElementById("form").addEventListener("submit",input);
-        var n,e,m;
-        function getData()
-        {
-            n=Name.value;
-            e=email.value;
-            m=message.value;
-        }
-
-        function input(event){
-            event.preventDefault();
-            getData();
-            set(ref(db,"Message/"+e.substring(0,e.indexOf('@'))),{
-                Name:n,
-                Email:e,
-                Message:m
-            }).then(()=>{
-                alert("Message Sent Successfully");
-                this.reset();
-            }).catch((error)=>alert("unsuccessful",error));
-        }
-  </script>
+<script src="../config.js" type="module"></script>
+<script src="../data.js" type="module"></script>
 
 </body>
 </html>
