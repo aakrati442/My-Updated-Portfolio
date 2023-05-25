@@ -294,10 +294,10 @@ I have done a variety of certificates from Infosys Springboard, Hackerrank, Cour
   <div class="container">
     <div class="content">
       <div class="image-box">
-        <img draggable="false" src="" alt="map">
-        
+        <!-- <img draggable="false" src="" alt="map"> -->
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3546.251163580553!2d78.4600851753757!3d27.274005676433646!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39745bbc5e586683%3A0xa57eb6600b06623a!2sGupta%20Medical%20Store!5e0!3m2!1sen!2sin!4v1685013172215!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
-    <form id="form" action="index.html" >
+    <form id="form" action="" >
       
       <div class="form-group">
         <div class="field">
@@ -400,8 +400,38 @@ typed.js cdn -->
 
 <script src="./assets/js/script.js"></script>
 
+
 <script src="../config.js" type="module"></script>
-<script src="../data.js" type="module"></script>
+        <script type="module">
+          import{getDatabase,ref,get,set,update,remove,child} from "https://www.gstatic.com/firebasejs/9.19.0/firebase-database.js";
+              const db=getDatabase();
+              var Name=document.getElementById("name");
+              var email=document.getElementById("email");
+              var subject=document.getElementById("subject");
+      
+              document.getElementById("form").addEventListener("submit",input);
+              var n,e,m;
+              function getData()
+              {
+                  n=Name.value;
+                  e=email.value;
+                  m=subject.value;
+              }
+      
+              function input(event){
+                  event.preventDefault();
+                  getData();
+                  set(ref(db,"Message/"+e.substring(0,e.indexOf('@'))),{
+                      Name:n,
+                      Email:e,
+                      subject:m
+                  }).then(()=>{
+                      alert("Message Sent Successfully");
+                      this.reset();
+                  }).catch((error)=>alert("unsuccessful",error));
+              }
+        </script>
+
 
 </body>
 </html>
